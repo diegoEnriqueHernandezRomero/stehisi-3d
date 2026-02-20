@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>STEHISI</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: black;
+    }
+    video {
+      position: fixed;
+      right: 10px;
+      bottom: 10px;
+      width: 160px;
+      opacity: 0.2;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- cámara -->
+  <video id="video" autoplay playsinline></video>
+
+  <!-- three.js clásico (estable para Pages) -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
+
+  <!-- TU CÓDIGO -->
+  <script type="module" src="./main.js"></script>
+
+</body>
+</html>
