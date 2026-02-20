@@ -5,13 +5,13 @@ export function createPlanet(scene) {
 
   for (let i = 0; i < count; i++) {
     const r = 3;
-    const theta = Math.random() * Math.PI * 2;
-    const phi = Math.acos(2 * Math.random() - 1);
+    const t = Math.random() * Math.PI * 2;
+    const p = Math.acos(2 * Math.random() - 1);
 
     positions.push(
-      r * Math.sin(phi) * Math.cos(theta),
-      r * Math.sin(phi) * Math.sin(theta),
-      r * Math.cos(phi)
+      r * Math.sin(p) * Math.cos(t),
+      r * Math.sin(p) * Math.sin(t),
+      r * Math.cos(p)
     );
   }
 
@@ -27,32 +27,37 @@ export function createPlanet(scene) {
 
   const planet = new THREE.Points(geometry, material);
   scene.add(planet);
-
   return planet;
 }
 
 export function createText(scene) {
-  const loader = new THREE.FontLoader();
+  const geo = new THREE.BufferGeometry();
+  const positions = [];
 
-  loader.load(
-    "https://threejs.org/examples/fonts/helvetiker_bold.typeface.json",
-    font => {
-      const geo = new THREE.TextGeometry("STEHISI", {
-        font,
-        size: 0.7,
-        height: 0.01
-      });
+  const text = "STEHISI";
+  let xOffset = -3;
 
-      geo.center();
-
-      const mat = new THREE.PointsMaterial({
-        color: 0xff66cc,
-        size: 0.04
-      });
-
-      const text = new THREE.Points(geo, mat);
-      text.position.y = 4;
-      scene.add(text);
+  for (let i = 0; i < text.length; i++) {
+    for (let j = 0; j < 400; j++) {
+      positions.push(
+        xOffset + Math.random() * 0.6,
+        4 + Math.random() * 0.8,
+        Math.random() * 0.4
+      );
     }
+    xOffset += 1.1;
+  }
+
+  geo.setAttribute(
+    "position",
+    new THREE.Float32BufferAttribute(positions, 3)
   );
+
+  const mat = new THREE.PointsMaterial({
+    color: 0xff66cc,
+    size: 0.04
+  });
+
+  const points = new THREE.Points(geo, mat);
+  scene.add(points);
 }
