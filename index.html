@@ -1,34 +1,28 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>STEHISI</title>
+  <title>STEHISI 3D</title>
   <style>
-    body {
-      margin: 0;
-      overflow: hidden;
-      background: black;
-    }
-    video {
-      position: fixed;
-      right: 10px;
-      bottom: 10px;
-      width: 160px;
-      opacity: 0.2;
-      pointer-events: none;
-    }
+    body { margin: 0; overflow: hidden; background: black; }
+    video { display: none; }
   </style>
 </head>
 <body>
 
-  <!-- cámara -->
-  <video id="video" autoplay playsinline></video>
+  <video id="input_video" autoplay playsinline></video>
 
-  <!-- three.js clásico (estable para Pages) -->
-  <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
+  <!-- THREE -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.149.0/build/three.min.js"></script>
+
+  <!-- MEDIAPIPE HANDS (CLÁSICO) -->
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
 
   <!-- TU CÓDIGO -->
-  <script type="module" src="./main.js"></script>
+  <script src="shapes.js"></script>
+  <script src="main.js"></script>
+  <script src="handTracking.js"></script>
 
 </body>
 </html>
